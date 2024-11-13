@@ -305,10 +305,14 @@ class ExactOptimalTransportConditionalFlowMatcher(ConditionalFlowMatcher):
         """
         x0, x1, y0, y1 = self.ot_sampler.sample_plan_with_labels(x0, x1, y0, y1)
         if return_noise:
-            t, xt, ut, eps = super().sample_location_and_conditional_flow(x0, x1, t, return_noise)
+            t, xt, ut, eps = super().sample_location_and_conditional_flow(
+                x0, x1, t, return_noise
+            )
             return t, xt, ut, y0, y1, eps
         else:
-            t, xt, ut = super().sample_location_and_conditional_flow(x0, x1, t, return_noise)
+            t, xt, ut = super().sample_location_and_conditional_flow(
+                x0, x1, t, return_noise
+            )
             return t, xt, ut, y0, y1
 
 
@@ -540,10 +544,14 @@ class SchrodingerBridgeConditionalFlowMatcher(ConditionalFlowMatcher):
         """
         x0, x1, y0, y1 = self.ot_sampler.sample_plan_with_labels(x0, x1, y0, y1)
         if return_noise:
-            t, xt, ut, eps = super().sample_location_and_conditional_flow(x0, x1, t, return_noise)
+            t, xt, ut, eps = super().sample_location_and_conditional_flow(
+                x0, x1, t, return_noise
+            )
             return t, xt, ut, y0, y1, eps
         else:
-            t, xt, ut = super().sample_location_and_conditional_flow(x0, x1, t, return_noise)
+            t, xt, ut = super().sample_location_and_conditional_flow(
+                x0, x1, t, return_noise
+            )
             return t, xt, ut, y0, y1
 
 
@@ -604,4 +612,8 @@ class VariancePreservingConditionalFlowMatcher(ConditionalFlowMatcher):
         """
         del xt
         t = pad_t_like_x(t, x0)
-        return math.pi / 2 * (torch.cos(math.pi / 2 * t) * x1 - torch.sin(math.pi / 2 * t) * x0)
+        return (
+            math.pi
+            / 2
+            * (torch.cos(math.pi / 2 * t) * x1 - torch.sin(math.pi / 2 * t) * x0)
+        )
