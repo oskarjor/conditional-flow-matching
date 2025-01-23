@@ -122,6 +122,10 @@ class OTPlanSampler:
         )
         return np.divmod(choices, pi.shape[1])
 
+    # TODO: ensure that order is consistent, i.e. maintain x0_0 as x0_0, ...
+    #       This is also the case for sample_plan_with_labels
+    #       The problem now is it is impossible to "follow" the trajectory
+    #       of a sample, as the order is not consistent
     def sample_plan(self, x0, x1, replace=True):
         r"""Compute the OT plan $\pi$ (wrt squared Euclidean cost) between a source and a target
         minibatch and draw source and target samples from pi $(x,z) \sim \pi$
